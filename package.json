@@ -1,0 +1,27 @@
+{
+  "name": "Cool Player",
+  "version": "2.0.0",
+  "description": "Cool Player",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk-wuhf02/faglig-fornyelse-BenjiCS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rts-cmk-wuhf02/faglig-fornyelse-BenjiCS/issues"
+  },
+  "homepage": "https://github.com/rts-cmk-wuhf02/faglig-fornyelse-BenjiCS#readme"
+}

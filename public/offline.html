@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Cool Player</title>
+      <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <meta name="apple-mobile-web-app-title" content="Cool Player" />
+      <meta name="description" content="Cool Player" />
+    </head>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body>
+    <main class="main">
+      <button id="butInstall" aria-label="Install">
+        <img
+        src="/images/install.svg"
+      />
+      </button>
+      <img
+        src="https://via.placeholder.com/338"
+        alt="coverart"
+        class="coverart"
+      />
+      <p class="title__feat">Godzilla (feat. Juice WRLD)</p>
+      <div class="artist">
+        <img
+          src="https://via.placeholder.com/50"
+          alt="artist"
+          class="artist__img"
+        />
+        <p class="title__song">Eminem, Juice WRLD</p>
+      </div>
+
+      <div class="contaner-width">
+        <audio class="music" id="track" src=""></audio>
+        <div id="controls" class="controls-bar">
+          <progress
+            class="controls-progress"
+            id="progress-bar"
+            min="0"
+            max="100"
+            value="0"
+          ></progress>
+          <span class="dot">
+            <div class="dot-overlay"></div>
+          </span>
+          <div class="song__timer-contaner">
+            <p class="song__time">00:00</p>
+            <p class="song__length">00:30</p>
+          </div>
+        </div>
+
+        <div class="controls-buttons">
+          <a href="" id="last-song">
+            <svg
+              id="last-song"
+              class="buttons-last-song"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              id="svgcontent"
+              x="1128"
+              y="402.5000000000001"
+              viewBox="0 0 248 399"
+            >
+              <path
+                d="M247.6237099407196,398.58546997677803 L48.3696899407196,199.28498997677804 L247.6237099407196,-2.3221969569497958e-8 L247.6237099407196,398.58546997677803 zM-5.9280395481309256e-8,396.69650997677803 L46.449769940719605,396.69650997677803 L46.449769940719605,1.8734699767780305 L-5.9280395481309256e-8,1.8734699767780305 L-5.9280395481309256e-8,396.69650997677803 z"
+              />
+            </svg>
+          </a>
+          <button id="play-pause" class="buttons-play"></button>
+          <a href="" id="skip-song">
+            <svg
+              id="skip-song"
+              class="buttons-skip-song"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              id="svgcontent"
+              x="1128"
+              y="402.5000000000001"
+              viewBox="0 0 248 399"
+            >
+              <path
+                d="M247.6237099407196,398.58546997677803 L48.3696899407196,199.28498997677804 L247.6237099407196,-2.3221969569497958e-8 L247.6237099407196,398.58546997677803 zM-5.9280395481309256e-8,396.69650997677803 L46.449769940719605,396.69650997677803 L46.449769940719605,1.8734699767780305 L-5.9280395481309256e-8,1.8734699767780305 L-5.9280395481309256e-8,396.69650997677803 z"
+                transform="rotate(180 123.81185150146484,199.29273986816406)"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </main>
+    <script src="/assets/javascript/player.js" defer></script>
+    <script>
+      let deferredInstallPrompt = null;
+      const installButton = document.getElementById("butInstall");
+      installButton.addEventListener("click", installPWA);
+      window.addEventListener(
+        "beforeinstallprompt",
+        saveBeforeInstallPromptEvent
+      );
+
+      function saveBeforeInstallPromptEvent(evt) {
+        deferredInstallPrompt = evt;
+        installButton.removeAttribute("hidden");
+      }
+
+      function installPWA(evt) {
+        deferredInstallPrompt.prompt();
+        evt.srcElement.setAttribute("hidden", true);
+        deferredInstallPrompt.userChoice.then(choice => {
+          if (choice.outcome === "accepted") {
+            console.log("User accepted the A2HS prompt", choice);
+          } else {
+            console.log("User dismissed the A2HS prompt", choice);
+          }
+          deferredInstallPrompt = null;
+        });
+      }
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(
+              function(registration) {
+                console.log("Registered!");
+              },
+              function(err) {
+                console.log("ServiceWorker registration failed: ", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("service worker is not supported");
+      }
+
+      navigator.serviceWorker.ready.then(function(registration) {
+        if (!registration.pushManager) {
+          alert("No push notifications support.");
+          return false;
+        }
+        registration.pushManager
+          .subscribe({
+            userVisibleOnly: true
+          })
+          .then(function(subscription) {
+            console.log("Subscribed.");
+          })
+          .catch(function(error) {
+            console.log("Subscription error: ", error);
+          });
+      });
+
+      window.addEventListener("beforeinstallprompt", e => {
+        console.log("beforeinstallprompt Event fired");
+        e.preventDefault();
+        this.deferredPrompt = e;
+        return false;
+      });
+      this.deferredPrompt.prompt();
+      this.deferredPrompt.userChoice.then(choice => {
+        console.log(choice);
+      });
+      this.deferredPrompt = null;
+    </script>
+  </body>
+</html>

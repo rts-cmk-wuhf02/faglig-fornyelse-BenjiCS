@@ -32,3 +32,22 @@ Det er især interessant for dig at se video 3. udgiv til skoletube og video 37 
 
 ## Evaluering
 Du vil blive evalueret på alle ovenstående punkter og i den aktuelle situation hvor vi er forhindret i at elvaluere på skolen, er især video præsentationen vigtig, for den del af evalueringen som omhandler karaktergivning. 
+
+
+# Benjamin Aflevering
+
+  a. Hvad har jeg udviklet.<br>
+      Jeg har lavet en PWA (Progressive Web App) hvor man kan høre musik
+
+  b. Hvilken teknologi har jeg anvendt.<br>
+      Jeg har anvendt node, js, html og css
+
+  c. Hvorfor har jeg anvendt den aktuelle teknologi.<br>
+      Jeg har anvendt mode fordi at jeg skulle bruge en server for at få PWA til at virke
+
+  d. Hvilke alternative teknologier jeg kunne have brugt.<br>
+      Jeg kunne ha brugt gulp til at lave html og css'en
+
+  e. Lidt om de fordele eller ulemper som du har erfaret omkring den aktuelle teknologi.<br>
+      Fordele: Jeg har mulighed i at lave en PWA (Progressive Web App) til en af de kommen opgaver
+      Ulemper: Jeg haved en ulempe med at jeg ikke kunne få den til at cahce mine filer så det brugte jeg tirsdag og lidt onsdag på at få til at virke
