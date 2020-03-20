@@ -51,3 +51,6 @@ Du vil blive evalueret på alle ovenstående punkter og i den aktuelle situation
   e. Lidt om de fordele eller ulemper som du har erfaret omkring den aktuelle teknologi.<br>
       Fordele: Jeg har mulighed i at lave en PWA (Progressive Web App) til en af de kommen opgaver
       Ulemper: Jeg haved en ulempe med at jeg ikke kunne få den til at cahce mine filer så det brugte jeg tirsdag og lidt onsdag på at få til at virke
+      
+      
+Jeg laver ikke en video jeg føler det går ud over min grænse
