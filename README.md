@@ -40,7 +40,7 @@ Du vil blive evalueret på alle ovenstående punkter og i den aktuelle situation
       Jeg har lavet en PWA (Progressive Web App) hvor man kan høre musik
 
   b. Hvilken teknologi har jeg anvendt.<br>
-      Jeg har anvendt node, js, html og css
+      Jeg har anvendt node-fetch, express, express-http-to-https, js, html og css
 
   c. Hvorfor har jeg anvendt den aktuelle teknologi.<br>
       Jeg har anvendt mode fordi at jeg skulle bruge en server for at få PWA til at virke

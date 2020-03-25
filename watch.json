@@ -10,6 +10,7 @@
       "^public/"
     ],
     "include": [
+      "^\\.env$",
       "\\.js$",
       "\\.json"
     ]
